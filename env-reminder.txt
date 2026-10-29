@@ -1,0 +1,62 @@
+# =====================================================================
+#  کلیدهایی که باید توی فایل .env پروژه‌ات عوض/اضافه کنی
+#  (بقیه‌ی کلیدهای .env مثل APP_KEY رو دست نزن)
+# =====================================================================
+
+# ---------------------------------------------------------------------
+#  A) لوکال (کامپیوتر خودت، با phpMyAdmin/XAMPP)
+# ---------------------------------------------------------------------
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=reminder_local          # دیتابیس جدید و خالی که خودت می‌سازی
+DB_USERNAME=root
+DB_PASSWORD=
+
+WHMCS_DB_DATABASE=whmcs_local       # دیتابیسی که دو فایل SQL رو توش Import کردی
+
+SESSION_DRIVER=file
+CACHE_STORE=file
+QUEUE_CONNECTION=sync
+
+MAIL_MAILER=log                     # ایمیل به‌جای ارسال، توی storage/logs/laravel.log نوشته می‌شه
+REMINDER_MAIL_TO=you@example.com
+REMINDER_DAYS=10
+REMINDER_TIMEZONE=Asia/Tehran
+REMINDER_INCLUDE_CLIENT_INFO=false
+REMINDER_INCLUDE_OVERDUE=false
+REMINDER_API_KEY=
+
+
+# ---------------------------------------------------------------------
+#  B) روی هاست (cPanel) — این‌ها جایگزین مقدارهای بالا می‌شن
+# ---------------------------------------------------------------------
+APP_ENV=production
+APP_DEBUG=false
+LOG_LEVEL=warning
+
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=clientdonyaweb_reminder   # دیتابیس جدید (اسم کاملِ cPanel با پیشوند)
+DB_USERNAME=clientdonyaweb_reminder   # یوزری که ساختی
+DB_PASSWORD=رمز-یوزر
+
+# همان یوزر، فقط با دسترسی SELECT روی دیتابیس WHMCS
+WHMCS_DB_DATABASE=clientdonyaweb_wcs
+
+SESSION_DRIVER=file
+CACHE_STORE=file
+QUEUE_CONNECTION=sync
+
+MAIL_MAILER=smtp
+MAIL_HOST=mail.yourdomain.com
+MAIL_PORT=465
+MAIL_SCHEME=smtps                    # برای پورت 587: MAIL_PORT=587 و MAIL_SCHEME=smtp
+MAIL_USERNAME=reminder@yourdomain.com
+MAIL_PASSWORD=رمز-ایمیل
+MAIL_FROM_ADDRESS=reminder@yourdomain.com
+MAIL_FROM_NAME="Expiry Reminder"
+
+REMINDER_MAIL_TO=ایمیل-خودت
+REMINDER_API_KEY=                    # خالی = API غیرفعال (برای cron لازم نیست)
